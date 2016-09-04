@@ -1,0 +1,26 @@
+{
+  "name": "lobot",
+  "version": "0.0.1",
+  "description": "Lobot's a fun and easy-to-use discord bot. Coded in Node.JS with the discord.js library. Features includes a sardoche's soundboard, other fun sounds and more.",
+  "main": "app.js",
+  "dependencies": {
+    "discord.js": "^8.1.0",
+    "jsonfile": "2.3.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GG84/lobot.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "lobot"
+  ],
+  "author": "Grégoire Lodi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GG84/lobot/issues"
+  },
+  "homepage": "https://github.com/GG84/lobot#readme"
+}

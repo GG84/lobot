@@ -1,0 +1,6 @@
+{
+    "help": "Displays this message",
+    "sdc <sound>|help \"<channel>\"": "Summon sardoche into the specified channel playing the specified sound. Channel is optional.",
+
+    "\nAuthor": "Gregoire Lodi - 2016"
+}

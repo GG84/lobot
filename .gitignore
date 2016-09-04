@@ -1,0 +1,3 @@
+/node_modules/*
+/modules/dump.txt
+config/config.json

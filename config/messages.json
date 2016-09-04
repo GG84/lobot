@@ -1,0 +1,15 @@
+{
+    "errors": {
+        "unrecognized": "${var} is not recognized by this bot as a valid argument.",
+        "too_many_args": "You entered too many arguments. Please retry. Keep in mind you need double quotes (\") to send lobot to a voice channel you're not in.",
+        "must_in_vc": "You must be in a join channel to execute this command. Please join one and try again.",
+        "not_permissions": "You do not have enough permissions to run this command. Please contact one of the bot's administrator such as <@!${var}>"
+    },
+    "info": {
+        "sounds_list": "```${var}```",
+        "root_help": "```${var}```",
+        "remi": "REMI"
+    },
+    "success": {
+    }
+}
