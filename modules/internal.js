@@ -3,6 +3,13 @@ const messagesFile = "config/messages.json";
 const messages     = json.readFileSync(messagesFile);
 
 
+/**
+ * Play a sound to the specified channel
+ *
+ * @param {voiceChannel} channel 
+ * @param {string}       file
+ * @param                client   
+*/
 function playSound(channel, file, client) {
     client.joinVoiceChannel(channel).then(connection => {
         connection.playFile(file)
@@ -22,6 +29,15 @@ function playSound(channel, file, client) {
     });
 }
 
+
+/**
+ * Logs a message to the console when a command is fired
+ * Logs author's name, id, server's name, id, channel's name, id
+ *
+ * @param          message
+ * @param {string} command
+ * @param {array}  args
+*/
 function log(message, command, args) {
     let authorName   = message.author.name;
     let authorID     = message.author.id;
@@ -38,7 +54,21 @@ function log(message, command, args) {
     console.log(log);
 }
 
-function messageUser(variable, type, name, client, message) {
+
+/**
+ * Send a message to a user using the reply feature, meaning the message will
+ * be formatted as "@User, message".
+ * The message is taken from a config/messages.json file, and it simulates a
+ * template literal feature, meaning you can insert one variable in the message.
+ *
+ * @param {string|null} variable
+ * @param {string}      type       (errors|info|success)
+ * @param {string}      name
+ * @param               client
+ * @param               message
+ *
+*/
+function sendMessageToUser(variable, type, name, client, message) {
     let stringToLiteral = messages[type][name];
     let regex = /\$\{(.*?)\}/ig;
     let parsedMessage;
@@ -54,5 +84,5 @@ function messageUser(variable, type, name, client, message) {
 module.exports = {
     playSound: playSound,
     log: log,
-    messageUser: messageUser
+    sendMessageToUser: sendMessageToUser
 }
