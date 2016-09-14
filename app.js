@@ -5,6 +5,7 @@ const internal       = require("./modules/internal.js");
 const misc           = require("./modules/misc.js");
 const configFilePath = "config/config.json";
 const token          = json.readFileSync(configFilePath).token;
+const botCommands    = json.readFileSync("config/commands.json");
 
 var client = new discord.Client();
 
@@ -33,12 +34,21 @@ function processCommand(message) {
 
     internal.log(message, command, args);
 
+    if (!command in botCommands)
+        internal.sendMessageTouser(command, "errors", "unrecognized", client,
+            message);
+    else {
+        let funcToEval = botCommands[command]["use"];
+        eval(funcToEval);
+    }
+
+/*
     switch(command) {
         case "help":
             misc.help(client, message);
             break;
 
-        case "sdc":
+        case "sdc":@ska
             soundboard.prepareToPlay("sardoche", args, client, message);
             break;
 
@@ -50,7 +60,7 @@ function processCommand(message) {
             let help = `Unrecognized command. Type &help for help.`;
             client.sendMessage(message.channel, help);
     }
-
+*/
     
 }
 

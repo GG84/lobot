@@ -31,14 +31,17 @@ function playSound(channel, file, client) {
 
 
 /**
- * Logs a message to the console when a command is fired
- * Logs author's name, id, server's name, id, channel's name, id
+ * Logs a message to the console when a command is fired.
+ * Logs date, author's name, id, server's name, id, channel's name, id.
  *
  * @param          message
  * @param {string} command
  * @param {array}  args
 */
 function log(message, command, args) {
+    let date = new Date();
+    let time = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+
     let authorName   = message.author.name;
     let authorID     = message.author.id;
     let serverName   = message.server.name;
@@ -46,10 +49,11 @@ function log(message, command, args) {
     let channelName  = message.channel.name;
     let channelID    = message.channel.id;
 
+    let dateInfos = `[${time}]`;
     let commandInfos = `Fired ${command} with ${args} by`;
     let authorInfos  = `${authorName} (${authorID}) on`;
     let serverInfos  = `${serverName}#${channelName}(${serverID}#${channelID})`;
-    let log = `${commandInfos} ${authorInfos} ${serverInfos}`;
+    let log = `${dateInfos} ${commandInfos} ${authorInfos} ${serverInfos}`;
                
     console.log(log);
 }

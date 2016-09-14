@@ -6,7 +6,7 @@
         "not_permissions": "You do not have enough permissions to run this command. Please contact one of the bot's administrator such as <@!${var}>"
     },
     "info": {
-        "sounds_list": "```${var}```",
+        "sounds_list": "```cpp${var}```",
         "root_help": "```${var}```",
         "remi": "REMI"
     },

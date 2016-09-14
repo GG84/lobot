@@ -8,12 +8,15 @@ const internal = require("./internal.js");
  * @param client
  * @param message
 */
-function help(client, message) {
+function help(botCommands, client, message) {
     var helpMessage = "";
-    var commands = json.readFileSync("config/commands.json");
 
-    for (key in commands)
-        helpMessage = `${helpMessage}${key}: ${commands[key]}\n`;
+    for (key in botCommands) {
+        let command = `${helpMessage}${botCommands[key]["cmd_desc"]}: `;
+        let help    = `${botCommands[key]["help"]}`;
+
+        helpMessage = `${command} ${help}\n`;
+    }
 
     internal.sendMessageToUser(helpMessage, "info", "root_help", client, 
         message);
@@ -51,6 +54,7 @@ function restart(configFilePath, client, message) {
  * @param message
 */
 function remi(client, message) {
+    internal.log(message, "remi", "");
     internal.sendMessageToUser(null, "info", "remi", client, message);
 }
 

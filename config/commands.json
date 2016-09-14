@@ -1,6 +1,18 @@
 {
-    "help": "Displays this message",
-    "sdc <sound>|help \"<channel>\"": "Summon sardoche into the specified channel playing the specified sound. Channel is optional.",
-
-    "\nAuthor": "Gregoire Lodi - 2016"
+    "help": {
+        "cmd_desc": "help",
+        "help": "Displays this message.",
+        "use": "misc.help(botCommands, client, message);"
+    },
+    "sdc": {
+        "cmd_desc": "sdc <sound>|help \"<channel>\"",
+        "help": "Summon sardoche into the specified channel playing the specified sound. Channel is optional and will be defaulted to the voice channel the user is in.",
+        "use": "soundboard.prepareToPlay(\"sardoche\", args, client, message);"
+    },
+    
+    "Author": {
+        "__comment": "How not to bother creating another function 101",
+        "cmd_desc": "\nAuhor",
+        "help": "Gregoire Lodi - 2016"
+    }
 }

@@ -41,7 +41,7 @@ function prepareToPlay(storedSoundsFileName, args, client, message) {
         let serverChannels = message.server.channels;
         let selectedChannel = getSelectedChannel(channelName, serverChannels);
 
-        if (selectedChannel === "")
+        if (!selectedChannel)
             internal.sendMessageToUser(channelName, "errors", "unrecognized", 
                 client, message);
         else
