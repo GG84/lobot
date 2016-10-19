@@ -5,9 +5,15 @@
         "use": "misc.help(botCommands, client, message);"
     },
     "sdc": {
-        "cmd_desc": "sdc <sound>|help \"<channel>\"",
+        "cmd_desc": "sdc <sound>|list \"<channel>\"",
         "help": "Summon sardoche into the specified channel playing the specified sound. Channel is optional and will be defaulted to the voice channel the user is in.",
         "use": "soundboard.prepareToPlay(\"sardoche\", args, client, message);"
+    },
+    "m":
+    {
+        "cmd_desc": "m <meme>|list",
+        "help": "Post a dank meme provided the dank name.",
+        "use": "misc.dankMeme(args, client, message);"
     },
     
     "Author": {

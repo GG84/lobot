@@ -15,7 +15,7 @@ function prepareToPlay(storedSoundsFileName, args, client, message) {
     var userSound = args[0];
     let storedSounds = json.readFileSync(soundFile);
 
-    if (!(userSound in storedSounds) && userSound !== "help")
+    if (!(userSound in storedSounds) && userSound !== "list")
         internal.sendMessageToUser(userSound, "errors", "unrecognized", client, 
             message);
 
@@ -23,9 +23,9 @@ function prepareToPlay(storedSoundsFileName, args, client, message) {
         internal.sendMessageToUser(null, "errors", "too_many_args", client, 
             message);
 
-    else if (args.length === 1 && userSound === "help")
+    else if (args.length === 1 && userSound === "list")
         internal.sendMessageToUser(generateSoundsList(storedSounds), "info", 
-            "sounds_list", client, message);
+            "list", client, message);
 
     else if (args.length === 1) {
         let voiceChannel = message.author.voiceChannel;

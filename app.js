@@ -1,11 +1,11 @@
-const discord        = require("discord.js");
-const json           = require("jsonfile");
-const soundboard     = require("./modules/soundboard.js");
-const internal       = require("./modules/internal.js");
-const misc           = require("./modules/misc.js");
-const configFilePath = "config/config.json";
-const token          = json.readFileSync(configFilePath).token;
-const botCommands    = json.readFileSync("config/commands.json");
+const discord          = require("discord.js");
+const json             = require("jsonfile");
+const soundboard       = require("./modules/soundboard.js");
+const internal         = require("./modules/internal.js");
+const misc             = require("./modules/misc.js");
+const configFilePath   = "config/config.json";
+const token            = json.readFileSync(configFilePath).token;
+const commandsFilePath = "config/commands.json";
 
 var client = new discord.Client();
 
@@ -32,10 +32,12 @@ function processCommand(message) {
     var command     = fullCommand.shift().substr(1);
     var args        = fullCommand;
 
+    let botCommands = json.readFileSync(commandsFilePath);
     internal.log(message, command, args);
 
-    if (!command in botCommands)
-        internal.sendMessageTouser(command, "errors", "unrecognized", client,
+    if (command == "&q" || command == "") { }
+    else if (!(command in botCommands))
+        internal.sendMessageToUser(command, "errors", "unrecognized", client,
             message);
     else {
         let funcToEval = botCommands[command]["use"];

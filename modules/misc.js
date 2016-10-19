@@ -59,8 +59,38 @@ function remi(client, message) {
 }
 
 
+/**
+ * Post a dank meme provided the dank name of the dank meme
+ *
+ * @param args
+ * @param client
+ * @param message
+*/
+function dankMeme(args, client, message) {
+    let dankMemeFilePath = "config/memes.json";
+    let storedMemes = json.readFileSync(dankMemeFilePath);
+    
+    if (args[0] == "list") {
+        let memesList = "";
+            for (key in storedMemes)
+                memesList += `${key} - `;
+        memesList = memesList.substr(0, memesList.length - 3);
+        internal.sendMessageToUser(memesList, "info", "list", 
+            client, message);
+    }
+    else if (!(args[0] in storedMemes))
+        internal.sendMessageToUser(args[0], "errors", "unrecognized",
+            client, message);
+    else {
+        let dankMemeUrl = storedMemes[args[0]];
+        internal.sendMessageToUser(dankMemeUrl, "success", "meme_url", 
+            client, message);
+    }
+}
+
 module.exports = {
     help: help,
     restart: restart,
-    remi: remi
+    remi: remi,
+    dankMeme: dankMeme
 }
